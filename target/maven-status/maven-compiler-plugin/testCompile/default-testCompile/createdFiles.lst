@@ -1,0 +1,3 @@
+org/example/mailservice/service/PostOfficeServiceTest.class
+org/example/mailservice/service/PostageServiceTest.class
+org/example/mailservice/service/TrackingServiceTest.class
