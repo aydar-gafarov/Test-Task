@@ -13,17 +13,25 @@ import java.util.List;
 @Entity
 @Data
 public class Postage {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     private String recipientName;
+
     private Long recipientIndex;
+
     private String recipientAddress;
+
     private String typePostage;
+
     private Long indexSender;
+
     @JsonIgnore
     private String status;
-    @OneToMany(mappedBy = "postage", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    @OneToMany(mappedBy = "postage", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Tracking> trackings = new ArrayList<>();
 

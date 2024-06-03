@@ -17,4 +17,14 @@ public class PostOffice {
     private Long index;
     private String nameOffice;
     private String address;
+
+    public PostOffice(long l, String s, String moscow) {
+        this.index = l;
+        this.nameOffice = s;
+        this.address = moscow;
+    }
+
+    public PostOffice() {
+
+    }
 }

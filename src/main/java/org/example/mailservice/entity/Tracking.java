@@ -10,11 +10,11 @@ public class Tracking {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "postage_id")
     private Postage postage;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_office_index")
     private PostOffice postOffice;
 
