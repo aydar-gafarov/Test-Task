@@ -6,6 +6,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Tracking {
+
     @Id
     @GeneratedValue
     private Long id;

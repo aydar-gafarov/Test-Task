@@ -3,7 +3,6 @@ package org.example.mailservice.controller;
 import org.example.mailservice.dto.PostageDTO;
 import org.example.mailservice.dto.TrackingDTO;
 import org.example.mailservice.entity.Postage;
-import org.example.mailservice.entity.Tracking;
 import org.example.mailservice.service.PostageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

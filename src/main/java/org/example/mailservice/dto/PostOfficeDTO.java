@@ -8,8 +8,11 @@ import org.example.mailservice.entity.PostOffice;
 public class PostOfficeDTO {
 
     private Long index;
+
     private String nameOffice;
+
     private String address;
+
     public PostOfficeDTO(PostOffice postOffice) {
         this.index = postOffice.getIndex();
         this.nameOffice = postOffice.getNameOffice();

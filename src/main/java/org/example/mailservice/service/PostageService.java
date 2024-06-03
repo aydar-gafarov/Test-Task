@@ -6,7 +6,6 @@ import org.example.mailservice.entity.Postage;
 import org.example.mailservice.entity.Tracking;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public interface PostageService {
 
