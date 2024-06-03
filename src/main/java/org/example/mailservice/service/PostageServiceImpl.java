@@ -1,6 +1,7 @@
 package org.example.mailservice.service;
 
 
+import org.example.mailservice.dto.PostageDTO;
 import org.example.mailservice.dto.TrackingDTO;
 import org.example.mailservice.entity.PostOffice;
 import org.example.mailservice.entity.Postage;
@@ -24,17 +25,19 @@ public class PostageServiceImpl implements PostageService {
     private PostageRepository postageRepository;
 
     @Override
-    public Postage registerPostage(Postage postage) {
+    public PostageDTO registerPostage(Postage postage) {
         PostOffice postOffice = postOfficeRepository.findByIndex(postage.getIndexSender());
         postage.setStatus("Just register in " + postOffice.getNameOffice() + " office with index " + postOffice.getIndex() + " on address " + postOffice.getAddress());
         Tracking tracking = new Tracking(postage, postOffice, postage.getStatus());
         postage.addTracking(tracking);
-        return postageRepository.save(postage);
+        Postage savedPostage = postageRepository.save(postage);
+        return new PostageDTO(savedPostage);
     }
 
     @Override
-    public Postage getPostage(Long id) {
-        return postageRepository.findById(id).orElseThrow(() -> new RuntimeException("Postage not found"));
+    public PostageDTO getPostage(Long id) {
+        Postage postage = postageRepository.findById(id).orElseThrow(() -> new RuntimeException("Postage not found"));
+        return new PostageDTO(postage);
     }
 
     @Override
@@ -50,11 +53,7 @@ public class PostageServiceImpl implements PostageService {
 
     @Override
     public TrackingDTO convertToDTO(Tracking tracking) {
-        return new TrackingDTO(
-                tracking.getStatus(),
-                tracking.getPostOffice().getNameOffice(),
-                tracking.getPostOffice().getIndex().toString()
-        );
+        return new TrackingDTO(tracking);
     }
 
 

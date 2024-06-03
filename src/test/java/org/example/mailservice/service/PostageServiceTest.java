@@ -1,5 +1,6 @@
 package org.example.mailservice.service;
 
+import org.example.mailservice.dto.PostageDTO;
 import org.example.mailservice.entity.PostOffice;
 import org.example.mailservice.entity.Postage;
 import org.example.mailservice.repository.PostOfficeRepository;
@@ -46,7 +47,7 @@ public class PostageServiceTest {
 
     @Test
     public void testGetPostage() {
-        postage = postageService.getPostage(postage.getId());
+        PostageDTO postageDTO = postageService.getPostage(postage.getId());
         assertEquals("Andrey", postage.getRecipientName());
     }
 }

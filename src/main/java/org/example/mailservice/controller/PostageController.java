@@ -1,5 +1,6 @@
 package org.example.mailservice.controller;
 
+import org.example.mailservice.dto.PostageDTO;
 import org.example.mailservice.dto.TrackingDTO;
 import org.example.mailservice.entity.Postage;
 import org.example.mailservice.entity.Tracking;
@@ -17,12 +18,12 @@ public class PostageController {
     private PostageService postageService;
 
     @PostMapping("/register")
-    public Postage registerPostage(@RequestBody Postage postage) {
+    public PostageDTO registerPostage(@RequestBody Postage postage) {
         return postageService.registerPostage(postage);
     }
 
     @GetMapping({"/{id}"})
-    public Postage getPostage(@PathVariable Long id) {
+    public PostageDTO getPostage(@PathVariable Long id) {
         return postageService.getPostage(id);
     }
 

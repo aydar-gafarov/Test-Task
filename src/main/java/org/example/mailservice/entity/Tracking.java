@@ -6,7 +6,6 @@ import lombok.Data;
 @Entity
 @Data
 public class Tracking {
-
     @Id
     @GeneratedValue
     private Long id;
@@ -23,11 +22,11 @@ public class Tracking {
 
     public Tracking() {
     }
+
     public Tracking(Postage postage, PostOffice postOffice, String status) {
         this.postOffice = postOffice;
         this.postage = postage;
         this.status = status;
     }
-
 
 }

@@ -1,6 +1,7 @@
 package org.example.mailservice.service;
 
 
+import org.example.mailservice.dto.TrackingDTO;
 import org.example.mailservice.entity.PostOffice;
 import org.example.mailservice.entity.Postage;
 import org.example.mailservice.entity.Tracking;
@@ -42,7 +43,7 @@ public class TrackingServiceTest {
 
     @Test
     public void testRecordTracking() {
-        Tracking tracking = trackingService.recordTracking(postage, postOffice, "just registered");
+        TrackingDTO tracking = trackingService.recordTracking(postage, postOffice, "just registered");
         assertEquals("just registered", tracking.getStatus());
     }
 

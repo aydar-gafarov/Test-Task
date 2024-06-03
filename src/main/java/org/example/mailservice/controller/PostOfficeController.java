@@ -1,5 +1,6 @@
 package org.example.mailservice.controller;
 
+import org.example.mailservice.dto.PostOfficeDTO;
 import org.example.mailservice.entity.PostOffice;
 import org.example.mailservice.service.PostOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,12 @@ public class PostOfficeController {
     private PostOfficeService postOfficeService;
 
     @PostMapping("/register")
-    public PostOffice registerPostOffice(@RequestBody PostOffice postOffice) {
+    public PostOfficeDTO registerPostOffice(@RequestBody PostOffice postOffice) {
         return postOfficeService.registerPostOffice(postOffice);
     }
 
     @GetMapping({"/{index}"})
-    public PostOffice getPostOffice(@PathVariable Long index) {
+    public PostOfficeDTO getPostOffice(@PathVariable Long index) {
         return postOfficeService.getPostOfficeById(index);
     }
 

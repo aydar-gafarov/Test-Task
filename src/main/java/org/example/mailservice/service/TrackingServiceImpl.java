@@ -1,6 +1,7 @@
 package org.example.mailservice.service;
 
 
+import org.example.mailservice.dto.TrackingDTO;
 import org.example.mailservice.entity.PostOffice;
 import org.example.mailservice.entity.Postage;
 import org.example.mailservice.entity.Tracking;
@@ -19,17 +20,17 @@ public class TrackingServiceImpl implements TrackingService {
     private PostOfficeRepository postOfficeRepository;
 
     @Override
-    public Tracking recordTracking(Postage postage, PostOffice postOffice, String status) {
+    public TrackingDTO recordTracking(Postage postage, PostOffice postOffice, String status) {
         Tracking tracking = new Tracking(postage, postOffice, status);
         postage.setStatus(status);
         postage.getTrackings().add(tracking);
         postageRepository.save(postage);
-        return tracking;
+        return new TrackingDTO(tracking);
     }
 
 
     @Override
-    public Tracking deliveredPostage(Long id, Long indexOffice) {
+    public TrackingDTO deliveredPostage(Long id, Long indexOffice) {
         Postage postage = postageRepository.findById(id).orElseThrow(() -> new RuntimeException("Postage not found"));
         PostOffice postOffice = postOfficeRepository.findByIndex(indexOffice);
         if (postOffice == null) {
@@ -40,7 +41,7 @@ public class TrackingServiceImpl implements TrackingService {
     }
 
     @Override
-    public Tracking comeToOfficePostage(Long id, Long indexOffice) {
+    public TrackingDTO comeToOfficePostage(Long id, Long indexOffice) {
         Postage postage = postageRepository.findById(id).orElseThrow(() -> new RuntimeException("Postage not found"));
         PostOffice postOffice = postOfficeRepository.findByIndex(indexOffice);
         if (postOffice == null) {
@@ -51,7 +52,7 @@ public class TrackingServiceImpl implements TrackingService {
     }
 
     @Override
-    public Tracking incomeFromOfficePostage(Long id, Long indexOffice) {
+    public TrackingDTO incomeFromOfficePostage(Long id, Long indexOffice) {
         Postage postage = postageRepository.findById(id).orElseThrow(() -> new RuntimeException("Postage not found"));
         PostOffice postOffice = postOfficeRepository.findByIndex(indexOffice);
         if (postOffice == null) {
@@ -62,7 +63,7 @@ public class TrackingServiceImpl implements TrackingService {
     }
 
     @Override
-    public Tracking receivedPostage(Long id, Long indexOffice) {
+    public TrackingDTO receivedPostage(Long id, Long indexOffice) {
         Postage postage = postageRepository.findById(id).orElseThrow(() -> new RuntimeException("Postage not found"));
         PostOffice postOffice = postOfficeRepository.findByIndex(indexOffice);
         if (postOffice == null) {
